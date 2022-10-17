@@ -12,7 +12,7 @@ public class ControllerServlet extends HttpServlet {
         String x = request.getParameter("x_value");
         String y = request.getParameter("y_value");
         String r = request.getParameter("r_value");
-        String session = request.getParameter("r_value");
+        String session = request.getParameter("session");
 
         if (Objects.equals(session, "clear")) {
             request.getRequestDispatcher("./clear").forward(request, response);

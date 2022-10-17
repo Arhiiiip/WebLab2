@@ -1,20 +1,14 @@
-// let $ = jQuery.noConflict();
-
 $('form').on('submit', function (event) {
         event.preventDefault()
         let r = document.getElementById("rArgument").value
         let y = document.getElementById("yArgument").value
         let x = document.querySelector('input[name="xArgument"]:checked').value
+        let session = session_id();
         if (validate(x, y, r)) {
             $.ajax({
                 url: './processing',
                 type: 'GET',
-                data:
-                    "x_value=" + x +
-                    "&y_value=" + y +
-                    "&r_value=" + r +
-                    "&session=" + session_id() +
-                    "&command=" + "shoot",
+                data: {'x_value': x, 'y_value': y, 'r_value': r, 'session': session, 'command': "shoot"},
                 success: function (data) {
                     oneShoot(data)
                 }
@@ -46,7 +40,7 @@ function oneShoot(data) {
 }
 
 function cleanError() {
-    let errorRow = document.getElementById('error');
+    let errorRow = $('error');
     errorRow.innerHTML = '';
 }
 

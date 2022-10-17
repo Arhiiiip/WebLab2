@@ -1,4 +1,4 @@
-document.getElementById("buttonReset").onclick = function reset(){
+$('buttonReset').onclick = function reset(){
     cleanError();
     let dots = document.getElementById('dot');
     if (dots == null){
@@ -38,8 +38,6 @@ document.getElementById("buttonReset").onclick = function reset(){
     let table = $('#historyTable');
 
     table.replaceWith(table_new);
-
-    count_rows = 0;
 
     $.ajax({
         url: './processing',

@@ -17,6 +17,12 @@
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
     <script src="js/reset.js"></script>
+    <script src="js/shoot.js"></script>
+    <script src="js/refreshShoot.js"></script>
+    <script src="js/submit.js"></script>
+    <script src="js/table.js"></script>
+    <script src="js/validator.js"></script>
+
 </head>
 <body class="base">
     <header>
