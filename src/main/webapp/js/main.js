@@ -1,107 +1,74 @@
-let dollar = jQuery.noConflict();
+// let $ = jQuery.noConflict();
 
-let count_rows = (sessionStorage.length/6);
-
-let nameTag = ['X', 'Y', 'R', 'CT', 'ET', 'Re'];
-
-dollar('form').on('submit', function (event) {
-    event.preventDefault()
-    let x = dollar('#xArgument').val();
-    let y = dollar('#yArgument').val();
-    let r = dollar('#rArgument').val();
-    if (validate(x, y, r)) {
-        shoot(x, y, r);
-        dollar.ajax({
-            url: 'php/main.php',
-            type: 'POST',
-            cache: false,
-            data:
-                "x_value=" + document.getElementById("xArgument").value +
-                "&y_value=" + document.getElementById("yArgument").value +
-                "&r_value=" + document.getElementById("rArgument").value,
-        }).done(add_row)
-            .fail(processError)
-    } else {
-        let errorRow  = document.getElementById('error');
-        errorRow.innerHTML = "Data not valid";
-    }
-})
-
-function processError(xhr, status, errorThrown) {
-    alert("Sorry, there was a problem!");
-    console.log("Error: " + errorThrown);
-    console.log("Status: " + status);
-    console.dir(xhr);
-}
-
-function add_row(data) {
-    let countTag = 0;
-    count_rows = count_rows + 1;
-    cleanError();
-    let start_row = dollar('startTable');
-    let real_row = dollar('tr');
-    for (let i in data){
-        let info = document.createElement('td');
-        info.innerHTML = data[i];
-        real_row.appendChild(info);
-        let tag = nameTag[countTag] + count_rows;
-        add_storage(tag, data[i]);
-        countTag = countTag + 1;
-    }
-    start_row.after(real_row);
-}
-
-function add_storage(key, data){
-    sessionStorage.setItem(key, data);
-}
-
-function validate(x, y, r) {
-    return +x > -3 && +x < 5 && +y > -3 && +y < 3 && +r < 5 && +r > 2;
-}
-
-
-function shoot(x, y, r) {
-    if (validate(x, y, r)) {
-        let dots = document.getElementById('dot')
-        if (dots == null) {
+$('form').on('submit', function (event) {
+        event.preventDefault()
+        let r = document.getElementById("rArgument").value
+        let y = document.getElementById("yArgument").value
+        let x = document.querySelector('input[name="xArgument"]:checked').value
+        if (validate(x, y, r)) {
+            $.ajax({
+                url: './processing',
+                type: 'GET',
+                data:
+                    "x_value=" + x +
+                    "&y_value=" + y +
+                    "&r_value=" + r +
+                    "&session=" + session_id() +
+                    "&command=" + "shoot",
+                success: function (data) {
+                    oneShoot(data)
+                }
+            })
         } else {
-            dots.remove()
+            let errorRow = document.getElementById('error');
+            errorRow.innerHTML = "Data not valid";
         }
-        let cr = +r;
-        let xc = +x * (150 / cr) + 200;
-        let yc = -(+y * (150 / cr)) + 200;
-        const shoot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        shoot.setAttribute('r', '4');
-        shoot.setAttribute('cx', String(xc));
-        shoot.setAttribute('cy', String(yc));
-        shoot.setAttribute('fill', 'black');
-        shoot.setAttribute('color', 'black');
-        shoot.setAttribute('id', 'dot');
-        let pole = document.getElementById('graph');
-        pole.appendChild(shoot);
-    } else {
-        alert('okey')
     }
+)
+
+// function processError(xhr, status, errorThrown) {
+//     alert("Sorry, there was a problem!");
+//     console.log("Error: " + errorThrown);
+//     console.log("Status: " + status);
+//     console.dir(xhr);
+// }
+
+function session_id() {
+    return /SESS\w*ID=([^;]+)/i.test(document.cookie) ? RegExp.$1 : false;
 }
 
-function cleanError(){
+function oneShoot(data) {
+    let x = data.toArray()[data.size() - 1].x
+    let y = data.toArray()[data.size() - 1].y
+    let r = data.toArray()[data.size() - 1].r
+    let result = data.toArray()[data.size() - 1].result
+    shoot(x, y, r, result)
+}
+
+function cleanError() {
     let errorRow = document.getElementById('error');
     errorRow.innerHTML = '';
 }
 
-window.onload = function() {
-    let ssLen = sessionStorage.length/6;
-    let countss = 1;
-    let start_row = document.getElementById('startTable');
-    while(ssLen + 1 > countss){
-        let real_row = document.createElement('tr');
-        for(let j in nameTag){
-            let key = nameTag[j] + countss;
-            let info = document.createElement('td');
-            info.innerHTML = sessionStorage.getItem(key);
-            real_row.appendChild(info);
+window.onload = function (event) {
+    event.preventDefault()
+    $.ajax({
+        url: './processing',
+        type: 'GET',
+        data:
+            "&command=" + "refresh",
+        success: function (data) {
+            refreshShoot(data)
         }
-        start_row.after(real_row)
-        countss = countss + 1;
+    })
+
+
+    let xBoxes = document.forms[0].elements.xArgument;
+    for (let box of xBoxes) {
+        box.onclick = (event) => {
+            xBoxes.forEach(box => {
+                if (box !== event.target) box.checked = false;
+            })
+        }
     }
 }

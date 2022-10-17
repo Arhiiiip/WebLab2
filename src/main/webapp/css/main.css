@@ -1,4 +1,4 @@
-main{
+main {
     min-width: 700px;
 }
 
@@ -16,19 +16,20 @@ footer {
     color: #fff;
 }
 
-header h1{
+header a {
+    font-size: 25px;
     font-family: monospace;
 }
 
-.graph{
+.graph {
     grid-column: 1/2;
 }
 
-.base{
+.base {
     background: rgba(255, 128, 0, 0.47);
 }
 
-.meaning{
+.meaning {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-gap: 15%;
@@ -40,7 +41,7 @@ header h1{
     width: 90%;
 }
 
-.buttonData{
+.buttonData {
     font-size: 150%;
     width: 75%;
     height: 120%;
@@ -57,15 +58,21 @@ header h1{
     background: linear-gradient(#F3AE0F, #E38916) #E38916;
     transition: 0.2s;
 }
-button:hover{background: linear-gradient(#f5ae00, #f59500) #f5ae00;}
-button:active { background: linear-gradient(#f59500, #f5ae00) #f59500; }
 
-.error{
+button:hover {
+    background: linear-gradient(#f5ae00, #f59500) #f5ae00;
+}
+
+button:active {
+    background: linear-gradient(#f59500, #f5ae00) #f59500;
+}
+
+.error {
     color: red;
 }
 
-.bord{
-    min-width: 200px;
+.bord {
+    min-width: 244px;
     box-shadow: 8px 8px 5px #444;
     border-radius: 10px;
     margin-right: 5%;
@@ -77,13 +84,13 @@ button:active { background: linear-gradient(#f59500, #f5ae00) #f59500; }
     background-image: radial-gradient(#fd9090, #855085);
 }
 
-.plane{
+.plane {
     margin-left: 5%;
     float: left;
     width: 35%;
 }
 
-.historyTable{
+.historyTable {
     grid-column: 1/1;
     grid-row: 2;
     margin-left: 10%;
@@ -94,7 +101,7 @@ button:active { background: linear-gradient(#f59500, #f5ae00) #f59500; }
     margin-bottom: 5%;
 }
 
-.tableData{
+.tableData {
     margin-left: 10%;
     margin-right: 10%;
     border: 5px;
@@ -103,7 +110,7 @@ button:active { background: linear-gradient(#f59500, #f5ae00) #f59500; }
     height: 50%;
 }
 
-.rangeInput{
+.rangeInput {
     width: 20%;
     height: 100%;
 }

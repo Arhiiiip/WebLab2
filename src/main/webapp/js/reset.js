@@ -1,4 +1,4 @@
-document.querySelector("#buttonReset").onclick = function reset(){
+document.getElementById("buttonReset").onclick = function reset(){
     cleanError();
     let dots = document.getElementById('dot');
     if (dots == null){
@@ -40,5 +40,15 @@ document.querySelector("#buttonReset").onclick = function reset(){
     table.replaceWith(table_new);
 
     count_rows = 0;
-    sessionStorage.clear();
+
+    $.ajax({
+        url: './processing',
+        type: 'GET',
+        data:
+            "&session=" + session_id() +
+            "&command=" + "reset",
+        success: function (data) {
+            oneShoot(data)
+        }
+    })
 }

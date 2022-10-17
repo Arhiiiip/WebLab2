@@ -1,22 +1,27 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" language="java" %>
+<%@ page import="utils.DataCol" %>
+<%@ page import="utils.Data" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.io.PrintWriter" %>
 
-<%--<jsp:useBean id="s" scope="application" class="utils.data">--%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/checkBox.css">
     <link rel="icon" href="img/favicon.ico">
     <meta charset="UTF-8">
-    <title>Lab 1 Riabokon</title>
-    <script defer src="js/jquery.js"></script>
-    <script defer src="js/main.js"></script>
-    <script defer src="js/reset.js"></script>
+    <title>Lab 2 Riabokon</title>
+    <script src="js/checkBox.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/reset.js"></script>
 </head>
 <body class="base">
-<header>
-    <h1>Riabokon Arhip, P32302, Option 3113</h1>
-</header>
+    <header>
+        <a>Riabokon Arhip, P32302, Option 531613</a>
+    </header>
 
 <main>
     <div class="meaning">
@@ -54,33 +59,86 @@
                      points="50,200 50,125 200,125 200,200"></polygon>
             <path fill="#1fce07" fill-opacity="0.4" stroke="black"
                   d="M 200,50 A 150,150  90 0,1 350,200 L 200,200 Z"></path>
+
+<%--        <%--%>
+<%--            List<Data> beanList = DataCol.getBeanList();--%>
+<%--            for (Data nextBean : beanList) {--%>
+<%--                int R = nextBean.getR();--%>
+<%--                int coordinateX = (nextBean.getX() * 150 / R) + 200;--%>
+<%--                int coordinateY = -(nextBean.getY() * 150 / R) + 200;--%>
+<%--                String color = nextBean.getColor();--%>
+
+<%--                out.println("<circle fill=\"" + color + "\" cx=\"" + coordinateX + "\" cy=\"" + coordinateY + "\"  r=\"4\"></circle>");--%>
+<%--            }--%>
+<%--        %>--%>
         </svg>
         <aside class="bord">
             <h2 style="">Input data:</h2>
             <form id="form" name="form" method="post">
-                <table class="tableData">
-                    <tr style="background: #e88989">
-                        <td>X</td>
-                        <td>Y</td>
-                        <td>R</td>
-                    </tr>
-                    <tr style="background: #ffb0b0">
-                        <td><label for="xArgument"></label><input class="rangeInput" type="checkbox" id="xArgument"></td>
-                        <td><label for="yArgument"></label><input class="rangeInput" type="text" id="yArgument"
-                                                                  maxlength="4" required></td>
-                        <td><label for="rArgument"></label><input class="rangeInput" type="text" id="rArgument"
-                                                                  maxlength="3" required></td>
-                    </tr>
-                </table>
-
+                <div>
+                    X:<br>
+                    <table id="checkX">
+                        <td>
+                            <input class="checkInput" name="xArgument" type="checkbox" id="xArgumentm4" value="-4">
+                            <label for="xArgumentm4">-4</label>
+                        </td>
+                        <td>
+                            <input class="checkInput" name="xArgument" type="checkbox" id="xArgumentm3" value="-3">
+                            <label for="xArgumentm3">-3</label>
+                        </td>
+                        <td>
+                            <input class="checkInput" name="xArgument" type="checkbox" id="xArgumentm2" value="-2">
+                            <label for="xArgumentm2">-2</label>
+                        </td>
+                        <td>
+                            <input class="checkInput" name="xArgument" type="checkbox" id="xArgumentm1" value="-1">
+                            <label for="xArgumentm1">-1</label>
+                        </td>
+                        <td>
+                            <input class="checkInput" name="xArgument" type="checkbox" id="xArgument0" value="0">
+                            <label for="xArgument0">0</label>
+                        </td>
+                        <td>
+                            <input class="checkInput" name="xArgument" type="checkbox" id="xArgument1" value="1">
+                            <label for="xArgument1">1</label>
+                        </td>
+                        <td>
+                            <input class="checkInput" name="xArgument" type="checkbox" id="xArgument2" value="2">
+                            <label for="xArgument2">2</label>
+                        </td>
+                        <td>
+                            <input class="checkInput" name="xArgument" type="checkbox" id="xArgument3" value="3">
+                            <label for="xArgument3">3</label>
+                        </td>
+                        <td>
+                            <input class="checkInput" name="xArgument" type="checkbox" id="xArgument4" value="4">
+                            <label for="xArgument4">4</label>
+                        </td>
+                    </table>
+                </div>
+                <div>
+                    <label for="yArgument">Y:</label><input class="rangeInput" type="text" id="yArgument"
+                                                            maxlength="4" required><br>
+                </div>
+                <div>
+                    R:
+                    <select class="rangeInput" id="rArgument" required>
+                        <option value="1">1
+                        <option value="1.5">1.5
+                        <option value="2">2
+                        <option value="2.5">2.5
+                        <option value="3">3
+                    </select>
+                </div>
                 <p>
-                    X in (-3 ... 5)<br>
                     Y in (-3 ... 3)<br>
-                    R in (2 ... 5)
                 </p>
                 <p class="error" id="error"></p>
                 <button type="submit" class="buttonData" id="buttonShoot">Shoot</button>
                 <button class="buttonData" id="buttonReset" type="button">Reset</button>
+
+<%--                <div class="sessionid" id="sessionid">--%>
+<%--                </div>--%>
             </form>
         </aside>
     </div>
@@ -96,8 +154,10 @@
     </table>
 </main>
 <footer>
-    <p>Author: Riabokon Arhip Borisovich<br>
-        <a href="mailto:rabokony@icloud.com">rabokony@icloud.com</a></p>
+    <p><a style="color:#ffffe5">Author: Riabokon Arhip Borisovich</a><br>
+        <a href="mailto:rabokony@icloud.com" style="text-decoration: none;color:#ffffe5">rabokony@icloud.com</a><br>
+    <a href="https://github.com/Arhiiiip" title="Go to the developer's github"
+        style="text-decoration: none;color:#ffffe5">Go to the developer's github</a></p>
 </footer>
 </body>
 </html>
