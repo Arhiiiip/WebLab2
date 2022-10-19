@@ -1,13 +1,13 @@
-/*input[name=xArgument]{*/
-/*    display: none;*/
-/*}*/
-/*input[name=xArgument] + label{*/
-/*    display: inline-block;*/
-/*    vertical-align: top;*/
-/*    width: 20px;*/
-/*    height: 20px;*/
-/*    border: 1px solid #c06565;*/
-/*}*/
-/*input[name=xArgument]:checked + label{*/
-/*    background: green;*/
-/*}*/
+input[name=xArgument]{
+    display: none;
+}
+input[name=xArgument] + label{
+    display: inline-block;
+    vertical-align: top;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #c06565;
+}
+input[name=xArgument]:checked + label{
+    background: green;
+}

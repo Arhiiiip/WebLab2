@@ -12,17 +12,8 @@
     <link rel="stylesheet" href="css/checkBox.css">
     <link rel="icon" href="img/favicon.ico">
     <meta charset="UTF-8">
-    <title>Lab 2 Riabokon</title>
-    <script src="js/checkBox.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/reset.js"></script>
-    <script src="js/shoot.js"></script>
-    <script src="js/refreshShoot.js"></script>
-    <script src="js/submit.js"></script>
-    <script src="js/table.js"></script>
-    <script src="js/validator.js"></script>
 
+    <title>Lab 2 Riabokon</title>
 </head>
 <body class="base">
     <header>
@@ -166,4 +157,15 @@
         style="text-decoration: none;color:#ffffe5">Go to the developer's github</a></p>
 </footer>
 </body>
+
+<script src="js/checkBox.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/main.js"></script>
+<script src="js/reset.js"></script>
+<script src="js/shoot.js"></script>
+<script src="js/refreshShoot.js"></script>
+<script src="js/submit.js"></script>
+<script src="js/table.js"></script>
+<script src="js/validator.js"></script>
+
 </html>

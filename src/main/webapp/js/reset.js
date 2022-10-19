@@ -1,5 +1,6 @@
-$('buttonReset').onclick = function reset(){
+document.querySelector("#buttonReset").onclick = function reset(){
     cleanError();
+    console.log("resetBUM")
     let dots = document.getElementById('dot');
     if (dots == null){
     }else{
@@ -38,13 +39,12 @@ $('buttonReset').onclick = function reset(){
     let table = $('#historyTable');
 
     table.replaceWith(table_new);
+    let session = session_id();
 
     $.ajax({
         url: './processing',
         type: 'GET',
-        data:
-            "&session=" + session_id() +
-            "&command=" + "reset",
+        data: {'x_value': 0, 'y_value': 0, 'r_value': 0, 'session': session, 'command': "reset"},
         success: function (data) {
             oneShoot(data)
         }

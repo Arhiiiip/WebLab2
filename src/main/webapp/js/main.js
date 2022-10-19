@@ -3,18 +3,22 @@ $('form').on('submit', function (event) {
         let r = document.getElementById("rArgument").value
         let y = document.getElementById("yArgument").value
         let x = document.querySelector('input[name="xArgument"]:checked').value
+        console.log(r)
+        console.log(y)
+        console.log(x)
         let session = session_id();
         if (validate(x, y, r)) {
             $.ajax({
-                url: './processing',
+                url: '/WebLab2_1_0_SNAPSHOT_war/processing',
                 type: 'GET',
                 data: {'x_value': x, 'y_value': y, 'r_value': r, 'session': session, 'command': "shoot"},
                 success: function (data) {
+                    console.log(data)
                     oneShoot(data)
                 }
             })
         } else {
-            let errorRow = document.getElementById('error');
+            let errorRow = $('error');
             errorRow.innerHTML = "Data not valid";
         }
     }
@@ -46,11 +50,11 @@ function cleanError() {
 
 window.onload = function (event) {
     event.preventDefault()
+    let session = session_id();
     $.ajax({
         url: './processing',
         type: 'GET',
-        data:
-            "&command=" + "refresh",
+        data:{'x_value': 0, 'y_value': 0, 'r_value': 0, 'session': session, 'command': "refresh"},
         success: function (data) {
             refreshShoot(data)
         }
