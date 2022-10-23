@@ -3,11 +3,12 @@ package servlets;
 import utils.Data;
 import utils.DataCol;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class SessionCleanerServlet extends HttpServlet {
     @Override

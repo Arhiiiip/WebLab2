@@ -167,5 +167,11 @@
 <script src="js/submit.js"></script>
 <script src="js/table.js"></script>
 <script src="js/validator.js"></script>
+<script src="js/mouse_shot.js"></script>
+<script>
+    $(document).on('click', 'svg', function (event) {
+        mouse_shot(event);
+    });
+</script>
 
 </html>

@@ -1,10 +1,13 @@
-document.querySelector("#buttonReset").onclick = function reset(){
+document.querySelector("#buttonReset").onclick = function reset() {
     cleanError();
     console.log("resetBUM")
     let dots = document.getElementById('dot');
-    if (dots == null){
-    }else{
-        dots.remove();
+    if (dots == null) {
+    } else {
+        while (dots != null) {
+            dots.remove();
+            dots = document.getElementById('dot');
+        }
     }
     let x = document.createElement('td');
     x.innerHTML = 'X';
@@ -42,11 +45,8 @@ document.querySelector("#buttonReset").onclick = function reset(){
     let session = session_id();
 
     $.ajax({
-        url: './processing',
+        url: '/WebLab2_1_0_SNAPSHOT_war/processing',
         type: 'GET',
-        data: {'x_value': 0, 'y_value': 0, 'r_value': 0, 'session': session, 'command': "reset"},
-        success: function (data) {
-            oneShoot(data)
-        }
+        data: {'x_value': 0, 'y_value': 0, 'r_value': 0, 'session': session, 'command': 'reset'},
     })
 }

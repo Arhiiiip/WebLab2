@@ -8,6 +8,10 @@
         <servlet-class>servlets.AreaCheckServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>servlets.TestServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ControllerServlet</servlet-name>
         <servlet-class>servlets.ControllerServlet</servlet-class>
     </servlet>
@@ -19,6 +23,10 @@
         <servlet-name>SessionRefreshServlet</servlet-name>
         <servlet-class>servlets.SessionRefreshServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SessionCleanerServlet</servlet-name>
         <url-pattern>/clear</url-pattern>
@@ -35,7 +43,7 @@
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/processing</url-pattern>
     </servlet-mapping>
-    <error-page>
-        <location>/error-pages/422.jsp</location>
-    </error-page>
+<!--    <error-page>-->
+<!--        <location>/error-pages/422.jsp</location>-->
+<!--    </error-page>-->
 </web-app>

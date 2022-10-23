@@ -1,20 +1,24 @@
 package utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.Serializable;
+import java.lang.runtime.ObjectMethods;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.kopitubruk.util.json.JSONUtil;
 
 @lombok.Data
 public class Data implements Serializable {
 
-    private int x, y, r;
+    private double x, y, r;
     private boolean result;
     private String currentTime, executeTime, session, color;
 
     private Map<String, String> getBean() {
-        Map<String, String> bean = new HashMap<>();
+        Map<String, String> bean = new LinkedHashMap<>();
         bean.put("x", String.valueOf(x));
         bean.put("y", String.valueOf(y));
         bean.put("r", String.valueOf(r));
@@ -27,7 +31,10 @@ public class Data implements Serializable {
     public Data() {
     }
 
-    public String jsonBean() {
-        return JSONUtil.toJSON(this.getBean());
+    public String jsonBean() throws JsonProcessingException {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(this.getBean());
+
     }
 }
