@@ -15,7 +15,7 @@ public class Data implements Serializable {
 
     private double x, y, r;
     private boolean result;
-    private String currentTime, executeTime, session, color;
+    private String currentTime, executeTime, session;
 
     private Map<String, String> getBean() {
         Map<String, String> bean = new LinkedHashMap<>();
