@@ -4,18 +4,22 @@ import java.io.PrintWriter;
 import java.util.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.servlet.AsyncContext;
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletResponse;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+//import jakarta.servlet.AsyncContext;
+//import jakarta.servlet.ServletContext;
+//import jakarta.servlet.ServletException;
+//import jakarta.servlet.ServletResponse;
+//import jakarta.servlet.annotation.WebServlet;
+//import jakarta.servlet.http.HttpServlet;
+//import jakarta.servlet.http.HttpServletRequest;
+//import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
 import utils.Data;
 
 
 import java.io.IOException;
 
+//@WebServlet(name = "CheckChangeServlet", value = "/change", asyncSupported = true)
 public class CheckChangeServlet extends HttpServlet {
     private List<AsyncContext> contexts = new LinkedList<>();
     private Map<AsyncContext, String> mapSession = new HashMap<>();

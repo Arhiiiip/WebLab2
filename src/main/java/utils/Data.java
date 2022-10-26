@@ -2,9 +2,11 @@ package utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+//import jakarta.servlet.http.HttpServletRequest;
+//import jakarta.servlet.http.HttpSession;
 
+import javax.servlet.*;
+import javax.servlet.http.*;
 import java.io.Serializable;
 import java.lang.runtime.ObjectMethods;
 import java.util.HashMap;

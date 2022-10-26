@@ -7,7 +7,7 @@ $('form').on('submit', function (event) {
             let x = document.querySelector('input[name="xArgument"]:checked').value
             if (validate(y)) {
                 $.ajax({
-                    url: '/WebLab2_1_0_SNAPSHOT_war/processing',
+                    url: './processing',
                     type: 'GET',
                     data: {'x_value': x, 'y_value': y, 'r_value': r, 'command': 'shoot'},
                 }).done(oneShoot)

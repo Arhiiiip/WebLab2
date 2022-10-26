@@ -6,7 +6,7 @@ $('svg').click(function(event){
     let x = ((event.pageX - elem_left - 200)* r) / 150;
     let y = ((200 - (event.pageY - elem_top))* r) / 150;
     $.ajax({
-        url: '/WebLab2_1_0_SNAPSHOT_war/processing',
+        url: './processing',
         type: 'GET',
         data: {'x_value': x, 'y_value': y, 'r_value': r, 'command': 'shoot'},
     }).done(oneShoot)

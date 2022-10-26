@@ -1,6 +1,6 @@
 function requestChange(data, com) {
     $.ajax({
-        url: '/WebLab2_1_0_SNAPSHOT_war/change',
+        url: './change',
         type: 'POST',
         cache: false,
         dataType: "json",

@@ -1,7 +1,7 @@
 function changeCome() {
     console.log("CHANGECOME")
     $.ajax({
-        url: '/WebLab2_1_0_SNAPSHOT_war/change',
+        url: './change',
         type: 'GET',
     }).done(yeees)
         .fail(errorCRA)
@@ -19,7 +19,6 @@ function yeees(data) {
 }
 
 function shootChange(data) {
-    console.log(data)
     let x = data[data.length - 1].x
     let y = data[data.length - 1].y
     let r = data[data.length - 1].r
@@ -31,7 +30,6 @@ function shootChange(data) {
 }
 
 function errorCRA() {
-    console.log(":BBBBH")
     changeCome()
 }
 

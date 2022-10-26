@@ -1,7 +1,7 @@
 document.querySelector("#buttonReset").onclick = function reset() {
     cleanWin()
     $.ajax({
-        url: '/WebLab2_1_0_SNAPSHOT_war/processing',
+        url: './processing',
         type: 'GET',
         data: {'x_value': 0, 'y_value': 0, 'r_value': 0, 'command': 'reset'},
     })
@@ -9,7 +9,7 @@ document.querySelector("#buttonReset").onclick = function reset() {
     reqRefresh()
 
     $.ajax({
-        url: '/WebLab2_1_0_SNAPSHOT_war/change',
+        url: './change',
         type: 'POST',
         cache: false,
         dataType: "json",
@@ -23,7 +23,7 @@ document.querySelector("#buttonReset").onclick = function reset() {
         }
     }).done(myes)
         .fail(errorChange)
-
+    changeCome()
 }
 
 function cleanWin() {

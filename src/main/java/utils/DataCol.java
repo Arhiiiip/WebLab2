@@ -2,10 +2,11 @@ package utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import endpoint.Mailing;
-import jakarta.servlet.http.HttpServletRequest;
+//import jakarta.servlet.http.HttpServletRequest;
 import lombok.Getter;
 import org.kopitubruk.util.json.JSONUtil;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
 import java.io.Serializable;
 import java.util.*;
