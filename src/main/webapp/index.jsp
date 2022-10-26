@@ -147,6 +147,7 @@
             <td>Current time</td>
             <td>Execution time</td>
             <td>Result</td>
+            <td>Who</td>
         </tr>
     </table>
 </main>
@@ -163,15 +164,14 @@
 <script src="js/main.js"></script>
 <script src="js/reset.js"></script>
 <script src="js/shoot.js"></script>
-<script src="js/refreshShoot.js"></script>
+<script src="js/moreShoot.js"></script>
 <script src="js/submit.js"></script>
 <script src="js/table.js"></script>
 <script src="js/validator.js"></script>
+<script src="js/requestChange.js"></script>
 <script src="js/mouse_shot.js"></script>
-<script>
-    $(document).on('click', 'svg', function (event) {
-        mouse_shot(event);
-    });
-</script>
+<script src="js/changeCome.js"></script>
+<script src="js/reqRefresh.js"></script>
+<%--<script src="js/sessionID.js"></script>--%>
 
 </html>

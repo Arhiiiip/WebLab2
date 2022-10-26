@@ -17,17 +17,16 @@ public class ControllerServlet extends HttpServlet {
         String x = request.getParameter("x_value");
         String y = request.getParameter("y_value");
         String r = request.getParameter("r_value");
-        String session = request.getParameter("session");
         String command = request.getParameter("command");
 
         if (command.equals("reset")) {
             request.getRequestDispatcher("./clear").forward(request, response);
         } else if (command.equals("refresh")) {
             request.getRequestDispatcher("./refresh").forward(request, response);
-        } else if ((x != null && y != null && r != null && command.equals("shoot")) && (!x.trim().equals("") && !y.trim().equals("") && !r.trim().equals("") && !session.trim().equals(""))) {
+        } else if (command.equals("change")) {
+            request.getRequestDispatcher("./change").forward(request, response);
+        } else if ((x != null && y != null && r != null && command.equals("shoot")) && (!x.trim().equals("") && !y.trim().equals("") && !r.trim().equals(""))){
             request.getRequestDispatcher("./check").forward(request, response);
-        }else if (command.equals("test")) {
-            request.getRequestDispatcher("test").forward(request,response);
         } else {
             response.setStatus(422);
         }

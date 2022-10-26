@@ -1,5 +1,6 @@
 package servlets;
 
+import jakarta.servlet.http.HttpSession;
 import utils.Data;
 import utils.DataCol;
 
@@ -22,6 +23,7 @@ public class AreaCheckServlet extends HttpServlet {
 
         long start = System.nanoTime();
         Data bean = new Data();
+        String sessionID = request.getSession().getId();
 
         try {
             double x = Double.parseDouble(request.getParameter("x_value"));
@@ -34,15 +36,14 @@ public class AreaCheckServlet extends HttpServlet {
             }
 
             String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-            boolean result = isHit(x, y, r);
-            String session = request.getParameter("session");
+            String result = String.valueOf(isHit(x, y, r));
 
             bean.setX(x);
             bean.setY(y);
             bean.setR(r);
             bean.setCurrentTime(currentTime);
             bean.setResult(result);
-            bean.setSession(session);
+            bean.setSession(sessionID);
 
             String executionTime = String.valueOf(((double) (System.nanoTime() - start) / 1000000));
             bean.setExecuteTime(executionTime);
@@ -51,6 +52,8 @@ public class AreaCheckServlet extends HttpServlet {
         } catch (NumberFormatException exception) {
             response.setStatus(422);
         }
+
+
 
         response.setHeader("Cache-Control", "no-cache");
         response.setContentType("application/json; charset=UTF-8");
@@ -67,7 +70,7 @@ public class AreaCheckServlet extends HttpServlet {
             }
         } else {
             if (y <= 0) {
-                return y >= -2 * x - r * 2;
+                return y >= -2 * x - r;
             } else
                 return (-x <= r) && (y <= r / 2);
         }

@@ -8,7 +8,7 @@ $('svg').click(function(event){
     $.ajax({
         url: '/WebLab2_1_0_SNAPSHOT_war/processing',
         type: 'GET',
-        data: {'x_value': x, 'y_value': y, 'r_value': r, 'session': session_id(), 'command': 'shoot'},
+        data: {'x_value': x, 'y_value': y, 'r_value': r, 'command': 'shoot'},
     }).done(oneShoot)
         .fail(processError)
 });

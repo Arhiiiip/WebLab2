@@ -2,6 +2,8 @@ package utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import endpoint.Mailing;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.Getter;
 import org.kopitubruk.util.json.JSONUtil;
 
@@ -12,10 +14,6 @@ public class DataCol implements Serializable {
 
     @Getter
     private static final List<Data> beanList = Collections.synchronizedList(new LinkedList<>());
-
-    private static synchronized List<Data> getDataCol() {
-        return beanList;
-    }
 
     public static synchronized void addBean(Data bean) {
         beanList.add(bean);
@@ -32,7 +30,20 @@ public class DataCol implements Serializable {
             try {
                 beanJsonCol.add(bean.jsonBean());
             } catch (JsonProcessingException e) {
-                System.out.println("FUCKING TROUBLE");
+                e.printStackTrace();
+            }
+            count = count - 1;
+        }
+
+        return String.valueOf(beanJsonCol);
+    }
+    public static String jsonDataCol(HttpServletRequest request) throws JsonProcessingException {
+        int count = DataCol.getBeanList().size();
+        HashSet<String> beanJsonCol = new LinkedHashSet<>();
+        for (Data bean : DataCol.getBeanList()) {
+            try {
+                beanJsonCol.add(bean.jsonBean(request));
+            } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
             count = count - 1;

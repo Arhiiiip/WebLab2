@@ -23,6 +23,11 @@
         <servlet-name>SessionRefreshServlet</servlet-name>
         <servlet-class>servlets.SessionRefreshServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckChangeServlet</servlet-name>
+        <servlet-class>servlets.CheckChangeServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/test</url-pattern>
@@ -42,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/processing</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckChangeServlet</servlet-name>
+        <url-pattern>/change</url-pattern>
     </servlet-mapping>
 <!--    <error-page>-->
 <!--        <location>/error-pages/422.jsp</location>-->

@@ -1,4 +1,32 @@
 document.querySelector("#buttonReset").onclick = function reset() {
+    cleanWin()
+    $.ajax({
+        url: '/WebLab2_1_0_SNAPSHOT_war/processing',
+        type: 'GET',
+        data: {'x_value': 0, 'y_value': 0, 'r_value': 0, 'command': 'reset'},
+    })
+
+    reqRefresh()
+
+    $.ajax({
+        url: '/WebLab2_1_0_SNAPSHOT_war/change',
+        type: 'POST',
+        cache: false,
+        dataType: "json",
+        data: {
+            'x_value': 0,
+            'y_value': 0,
+            'r_value': 0,
+            'curTime': 0,
+            'exeTime': 0,
+            'result': 'resChange'
+        }
+    }).done(myes)
+        .fail(errorChange)
+
+}
+
+function cleanWin() {
     cleanError();
     console.log("resetBUM")
     let dots = document.getElementById('dot');
@@ -21,6 +49,8 @@ document.querySelector("#buttonReset").onclick = function reset() {
     execution_time.innerHTML = 'Execution time';
     let result = document.createElement('td');
     result.innerHTML = 'Result';
+    let who = document.createElement('td');
+    who.innerHTML = 'Who';
     let start_row = document.createElement('tr');
 
     start_row.appendChild(x);
@@ -29,6 +59,7 @@ document.querySelector("#buttonReset").onclick = function reset() {
     start_row.appendChild(current_time);
     start_row.appendChild(execution_time);
     start_row.appendChild(result);
+    start_row.appendChild(who);
 
     start_row.setAttribute('class', 'startTable');
     start_row.setAttribute('id', 'startTable');
@@ -42,11 +73,4 @@ document.querySelector("#buttonReset").onclick = function reset() {
     let table = $('#historyTable');
 
     table.replaceWith(table_new);
-    let session = session_id();
-
-    $.ajax({
-        url: '/WebLab2_1_0_SNAPSHOT_war/processing',
-        type: 'GET',
-        data: {'x_value': 0, 'y_value': 0, 'r_value': 0, 'session': session, 'command': 'reset'},
-    })
 }

@@ -13,10 +13,9 @@ import jakarta.servlet.http.HttpServletResponse;
 public class SessionCleanerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-        process(request, response);
+        String sessionID = request.getSession().getId();
+        DataCol.clear(sessionID);
     }
 
-    private void process(HttpServletRequest request, HttpServletResponse response) {
-        DataCol.clear(request.getParameter("session"));
-    }
+
 }

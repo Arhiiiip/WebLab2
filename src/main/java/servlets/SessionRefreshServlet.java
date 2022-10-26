@@ -15,12 +15,10 @@ public class SessionRefreshServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        process(request, response);
-    }
-
-    private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setHeader("Cache-Control", "no-cache");
         response.setContentType("application/json; charset=UTF-8");
-        response.getWriter().println(DataCol.jsonDataCol());
+        response.getWriter().println(DataCol.jsonDataCol(request));
     }
+
+
 }
