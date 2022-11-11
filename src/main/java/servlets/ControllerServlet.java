@@ -7,11 +7,12 @@ package servlets;
 //import jakarta.servlet.http.HttpServletRequest;
 //import jakarta.servlet.http.HttpServletResponse;
 
+import utils.Data;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-//@WebServlet(name = "ControllerServlet", value = "/processing")
 public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +31,12 @@ public class ControllerServlet extends HttpServlet {
         } else if ((x != null && y != null && r != null && command.equals("shoot")) && (!x.trim().equals("") && !y.trim().equals("") && !r.trim().equals(""))){
             request.getRequestDispatcher("./check").forward(request, response);
         } else {
+            Data bean = new Data();
             response.setStatus(422);
+            bean.setResult("The command you are trying to send is invalid.");
+            response.setHeader("Cache-Control", "no-cache");
+            response.setContentType("application/json; charset=UTF-8");
+            response.getWriter().println(bean.jsonBean(422));
         }
     }
 }

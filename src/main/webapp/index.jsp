@@ -1,8 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" language="java" %>
-<%@ page import="utils.DataCol" %>
-<%@ page import="utils.Data" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.io.PrintWriter" %>
 
 
 <!DOCTYPE html>

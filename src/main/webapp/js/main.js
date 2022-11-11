@@ -32,14 +32,6 @@ function processError(xhr, status, errorThrown) {
     console.dir(xhr);
 }
 
-// let session;
-//
-// function setSessionId(id) {
-//     session = id
-//     console.log(session)
-//     console.log(id)
-// }
-
 function oneShoot(data) {
     console.log(data)
     let x = data[data.length - 1].x
@@ -49,10 +41,10 @@ function oneShoot(data) {
     let color = data[data.length - 1].color
     console.log(x, y, r, result)
     shoot(x, y, r, result, color)
-    add_row(data[data.length - 1])
-    requestChange(data[data.length - 1], 'change')
-    // sendMessage(data)
-    // setSessionId(data[data.length - 1].session)
+    let masForRow = data.slice(0)
+    add_row(masForRow[data.length - 1])
+    let masForChange = data.slice(0)
+    requestChange(masForChange[data.length - 1], 'change')
 }
 
 function cleanError() {

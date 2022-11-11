@@ -21,12 +21,7 @@ public class Data implements Serializable {
     private String result, currentTime, executeTime, session;
 
     private Map<String, String> getBean() {
-        Map<String, String> bean = new LinkedHashMap<>();
-        bean.put("x", String.valueOf(x));
-        bean.put("y", String.valueOf(y));
-        bean.put("r", String.valueOf(r));
-        bean.put("currentTime", String.valueOf(currentTime));
-        bean.put("executionTime", String.valueOf(executeTime));
+        Map<String, String> bean = getPar();
         if(result.equals("true")) {
             bean.put("color", "green");
         }else if(result.equals("change")){
@@ -37,13 +32,27 @@ public class Data implements Serializable {
         return bean;
     }
 
-    private Map<String, String> getBean(HttpServletRequest request) {
+    private Map<String, String> getPar(){
         Map<String, String> bean = new LinkedHashMap<>();
         bean.put("x", String.valueOf(x));
         bean.put("y", String.valueOf(y));
         bean.put("r", String.valueOf(r));
         bean.put("currentTime", String.valueOf(currentTime));
         bean.put("executionTime", String.valueOf(executeTime));
+        return bean;
+    };
+
+    private Map<String, String> getBean(int a) {
+        Map<String, String> bean = new HashMap<>();
+        bean.put("x", String.valueOf(x));
+        bean.put("y", String.valueOf(y));
+        bean.put("r", String.valueOf(r));
+        bean.put("result", String.valueOf(result));
+        return bean;
+    }
+
+    private Map<String, String> getBean(HttpServletRequest request) {
+        Map<String, String> bean = getPar();
         if(String.valueOf(request.getSession().getId()).equals(session)) {
             if(String.valueOf(result).equals("true")) {
                 bean.put("color", "green");
@@ -62,6 +71,11 @@ public class Data implements Serializable {
     public String jsonBean() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(this.getBean());
+    }
+
+    public String jsonBean(int a) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(this.getBean(a));
     }
 
     public String jsonBean(HttpServletRequest request) throws JsonProcessingException {

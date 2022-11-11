@@ -11,12 +11,12 @@
         }
     </style>
 </head>
-<body background="bacgr.jpg">
+<%--<body background="bacgr.jpg">--%>
 <div id="error">
     <h1>Error 422</h1>
     <h2>Invalid data</h2>
-    <p>The data you are trying to send is invalid, check the conditions.<br/>
-        <a href="javascript:history.back()">Back to main page</a></p>
+    <p>The data you are trying to send is invalid, check the conditions.<br/></p>
+<%--    <a href="javascript:history.back()">Back to main page</a>--%>
 </div>
 </body>
 </html>

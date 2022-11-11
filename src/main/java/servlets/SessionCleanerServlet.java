@@ -13,7 +13,6 @@ import utils.DataCol;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-//@WebServlet(name = "SessionCleanerServlet", value = "/clear")
 public class SessionCleanerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {

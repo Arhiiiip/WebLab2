@@ -3,6 +3,8 @@ package servlets;
 import java.io.PrintWriter;
 import java.util.*;
 
+
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 //import jakarta.servlet.AsyncContext;
 //import jakarta.servlet.ServletContext;
@@ -19,7 +21,6 @@ import utils.Data;
 
 import java.io.IOException;
 
-//@WebServlet(name = "CheckChangeServlet", value = "/change", asyncSupported = true)
 public class CheckChangeServlet extends HttpServlet {
     private List<AsyncContext> contexts = new LinkedList<>();
     private Map<AsyncContext, String> mapSession = new HashMap<>();
@@ -99,30 +100,3 @@ public class CheckChangeServlet extends HttpServlet {
         }
     }
 }
-
-
-//    String countS = request.getParameter("count");
-//        if (countS == null && countS.trim().equals("")) {
-//                response.setStatus(422);
-//                return;
-//                }
-//                int count = Integer.parseInt(countS);
-//                List<Data> col = DataCol.getBeanList();
-//        int countElement = col.size();
-//        HashSet<String> beanJsonCol = new LinkedHashSet<>();
-//
-//
-//        while (count != countElement) {
-//        for (Data bean : DataCol.getBeanList()) {
-//        try {
-//        beanJsonCol.add(bean.jsonBean());
-//        } catch (JsonProcessingException e) {
-//        e.printStackTrace();
-//        }
-//        count = count + 1;
-//        }
-//        }
-//        response.setHeader("Cache-Control", "no-cache");
-//        response.setContentType("application/json; charset=UTF-8");
-//        response.getWriter().println(beanJsonCol);
-//        }
